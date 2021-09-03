@@ -1,4 +1,4 @@
-package pl.akademiaqa.api.trello.boards;
+package pl.akademiaqa.api.trello;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -15,6 +15,16 @@ public class BaseRequest {
                 .setBaseUri(TrelloUrl.BASE_URL)
                 .setContentType(ContentType.JSON)
                 .addQueryParams(queryParams)
+                .build();
+    }
+
+    public RequestSpecification requestsSetup(Map<String, ?> queryParams, Map<String, ?> pathParams) {
+
+        return new RequestSpecBuilder()
+                .setBaseUri(TrelloUrl.BASE_URL)
+                .setContentType(ContentType.JSON)
+                .addQueryParams(queryParams)
+                .addPathParams(pathParams)
                 .build();
     }
 }
